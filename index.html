@@ -1,6 +1,8 @@
 <html>
+    <link rel="icon" type="image/png" href="favicon.ico"/>
     <head>
         <meta charset=utf-8>
+        <title>Doner</title>
     </head>
     <style>
     *{
@@ -12,14 +14,14 @@
         margin: 0 auto;
         padding: 1rem;
         background-repeat: repeat;
-        background-image: url("pita1.png");
-        
+        background-image: url("pics/pita1.png");
+        word-wrap:break-word;
     }
     .center {
         text-align: left;
         padding: 10px;
         background-color: rgba(255, 221, 158, 0.699);
-        border-radius: 20px;
+        border-radius: 16px;
         
     }
     .centerbtn {
@@ -92,56 +94,89 @@
         <div id="english" class="center">
             <div id="header">
                 <h1 style="text-align:left;">Doner. Plugin for GIS apps
-                    <a id="engswitch" style="float:right;" href="/donerHelp/eng.html">English</a>
+                    <a id="engswitch" style="float:right;" href="/doner/eng.html">English</a>
                     <a id="splitter" style="float:right;"> | </a>
-                    <a id="ruswitch" style="float:right;" href="/donerHelp/rus.html">Русский</a>
+                    <a id="ruswitch" style="float:right;" href="/doner/rus.html">Русский</a>
                 </h1>
             </div>
             
             <p>Doner is a plugin made mainly for mappers to make their job a bit easier. Today it is supported by three GIS applications: ArcGIS, QGIS and Mapinfo. The main task of it is to mark a place on map where digitizing/geometry check/attribute check processes are completed so that user will see that he has not to return to particular place on map. </p>
-            <p>There are three main buttons in plugin (MapInfo version has four, further explained). </p>
-            <p><img src="doner_add_big.png"> <strong>Add doner</strong> – adds an ellipse on current map extent.</p>
-            <p><img src="doner_cut_big.png"> <strong>Cut doner</strong> – cuts an ellipse from existing Doner layer if there are any geometry in it</p>
-            <p><img src="doner_settings_big.png"> <strong>Settings</strong> – settings window where user can set width/height of ellipse, turn on/off only round shape and paint by default transparent orange color</p>
-            <p><img src="doner_crs_big.png"> <strong>Set CRS</strong> (only in MapInfo) – sets current view’s coordinate system in order for plugin to get right coordinates.</p>
+            <p>There are three main buttons in plugin (MapInfo version has four, further explained):</p>
+            <p><img src="pics/doner_add_big.png"> <strong>Add doner</strong> – adds an ellipse on current map extent</p>
+            <p><img src="pics/doner_cut_big.png"> <strong>Cut doner</strong> – cuts an ellipse from existing Doner layer if there are any geometry in it</p>
+            <p><img src="pics/doner_settings_big.png"> <strong>Settings</strong> – settings window where user can set width/height of ellipse, turn on/off only round shape and paint by default transparent orange color</p>
+            <p><img src="pics/doner_crs_big.png"> <strong>Set CRS</strong> (only in MapInfo) – sets current view’s coordinate system in order for plugin to get right coordinates</p>
             <p>Links to download plugins:</p>
             <ul>
-                <li ><p><strong>ArcGIS</strong>: url</p></li>
-                <li ><p><strong>QGIS</strong>: url</p></li>
-                <li ><p><strong>MapInfo</strong>: url</p></li>
+                <li><p><strong>ArcGIS</strong>: <a href="https://github.com/Kylsha/doner/blob/main/Doner.esriaddin?raw=true">download</a></p></li>
+                <li><p><strong>QGIS</strong>: <a href="https://github.com/Kylsha/doner/blob/main/doner_qgis.zip?raw=true">download</a></p></li>
+                <li><p><strong>MapInfo</strong>: <a href="https://github.com/Kylsha/doner/blob/main/doner_mapinfo.zip?raw=true">download</a></p></li>
             </ul>
-            <p>All data produced by this plugin will be stored in <em>C:\Users\%username%\Documents\mapDoner</em>. After using plugin another folders will appear in this path with a reference to GIS application you used. There are two kind of files there: a configuration file and Doner layer (*.shp for ArcGIS and QGIS, *.tab for MapInfo). You do not have to create any folder or file, plugin does it itself.</p>
+            <p>All data produced by this plugin will be stored in <em>C:\Users\%username%\Documents\mapDoner</em>. After using plugin another folders will appear in this path with a reference to GIS application you used. There are two kind of files there: a configuration file and Doner layer (*.shp for ArcGIS and *.tab for MapInfo). You do not have to create any folder or file, plugin does it itself.</p>
+            <h2>Video reference:</h2>
+            <iframe width="100%" height="550" src="https://www.youtube.com/embed/C5PS-lSH6PA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             <hr>
             <h2 id="arcgis">ArcGIS</h2>
-            <p>It is better to install <strong><em>Doner.esriaddin</em></strong> with a closed ArcMap/ArcCatalog from Windows Explorer, i.e. double-click it in a folder. That is because a development version cannot match user’s version of ArcGIS. When installed, open ArcMap then load any layer or project with layers. You will also see three buttons appearing in a window. If not, go to Customize – Customize Mode… and check for Doner toolbar. Then you can try to press "Add doner" button and a new layer called Doner will appear.</p>
-            <img class="pic_in" src="doner_arcgis_add.png"> 
-            <p>By pressing <img src="doner_add_big.png"> <strong>Add doner</strong> multiple times in different places on map, you will see that new ellipses will appear and immediately join the initial Doner shape</p>
-            <img class="pic_in" src="doner_arcgis_cut.png"> 
-            <p><img src="doner_cut_big.png"> <strong>Cut doner</strong> will cut an ellipse shape in initial Doner layer if there is an intersection with it. You may cut everything and layer will be empty. After that, you still can add new ellipses.</p>
-            <img class="pic_settings" src="doner_arcgis_settings.png"> 
-            <p><img src="doner_settings_big.png"> <strong>Doner settings</strong> provide manual set for width and height of ellipse in percent of current extent’s width/height. It cannot be string, zero, decimal or negative number, just a simple integer number from 1 to 100. You also can set a number more than 100 but as a result, ellipse will cross bounds of current extent. In addition, you can change a "Round" checkbox to make a round shape according only on height value. "Paint" checkbox will automatically set a symbology to Doner layer (borderless translucent orange fill).</p>
-            <p>After closing ArcMap, Doner shapefile layer will be located in <em>C:\Users\%username%\Documents\mapDoner\arcgis_doner</em>. When you start ArcMap again and press "Add doner", plugin will use this layer</p>
+            <h4>(Tested on ver. 10.2, 10.8)</h4>
+            <h3>Installation:</h3>
+            <ol>
+                <li><p>Close ArcMap/ArcCatalog and double-click on file <strong><em>Doner.esriaddin</em></strong> in file explorer. (That is because a development version cannot match user’s version of ArcGIS)</p></li>
+                <li><p>Open ArcMap. If there are no three plugin buttons, go to Customize – Customize Mode… and check for Doner toolbar</p></li>
+                <li><p>Load any layer or project with layers in ArcMap</p></li>
+                <li><p>Now you can try to press <strong>Add doner</strong> button and a new layer called Doner will appear. It will contain an orange ellipse already</p></li>
+            </ol>
+            <img class="pic_in" src="pics/scr_ag_1.png"> 
+            <p>By pressing <img src="pics/doner_add_big.png"> <strong>Add doner</strong> multiple times, you will see that new ellipses will appear and immediately join the initial Doner shape.</p>
+            <img class="pic_in" src="pics/scr_ag_2.png"> 
+            <p><img src="pics/doner_cut_big.png"> <strong>Cut doner</strong> will cut an ellipse shape in initial Doner layer if there is an intersection with it. You may cut everything and layer will be empty. After that, you still can add new ellipses.</p>
+            <img class="pic_settings" src="pics/scr_ag_3.png"> 
+            <p><img src="pics/doner_settings_big.png"> <strong>Doner settings</strong> provide manual set for width and height of ellipse in percent of current extent’s width/height. It cannot be string, zero, decimal or negative number, just a simple integer number from 1 to 100. You also can set a number more than 100 but as a result, ellipse will cross bounds of current extent. In addition, you can change a "Round" checkbox to make a round shape according only on height value. "Paint" checkbox will automatically set a symbology to Doner layer (borderless translucent orange fill).</p>
+            <p>After closing ArcGIS, Doner shapefile layer will be located in <em>C:\Users\%username%\Documents\mapDoner\arcgis_doner</em>. When you start ArcGIS again and press "Add doner", plugin will use this layer</p>
             <hr>
             <h2 id="qgis">QGIS</h2>
-            <p>To install plugin you have to open Plugins – Manage and Install Plugins – Install from ZIP and browse for <strong><em>doner.zip</em></strong>. After installation, three buttons will appear on tools tab in QGIS main window. If not, check Installed tab in Plugins – Manage and Install Plugins, find and check Doner plugin. After that, load layer or project containing layers and try to press "Add doner" button. A new layer "Doner" will appear.</p>
-            <img class="pic_in" src="doner_qgis_add.png"> 
-            <p>By pressing <img src="doner_add_big.png"> <strong>Add doner</strong> multiple times in different places on map, you will see that new ellipses will appear and immediately join the initial Doner shape.</p>
-            <img class="pic_in" src="doner_qgis_cut.png"> 
-            <p><img src="doner_cut_big.png"> <strong>Cut doner</strong> will cut an ellipse shape in initial Doner layer if there is an intersection with it. You may cut everything and layer will be empty. After that, you still can add new ellipses.</p>
-            <img class="pic_settings" src="doner_qgis_settings.png"> 
-            <p><img src="doner_settings_big.png"> <strong>Doner settings</strong> provide manual set for width and height of ellipse in percent of current extent’s width/height. It cannot be string, zero, decimal or negative number, just a simple integer number from 1 to 100. You also can set a number more than 100 but as a result, ellipse will cross bounds of current extent. In addition, you can change a "Round" checkbox to make a round shape according only on height value. "Paint" checkbox will automatically set a symbology to Doner layer (borderless translucent orange fill).</p>
+            <h4>(Tested on ver. 3.x.x)</h4>
+            <h3>Installation:</h3>
+            <ol>
+                <li><p>In QGIS main window go to Plugins – Manage and Install Plugins – Install from ZIP and browse for <strong><em>doner.zip</em></strong></p></li>
+                <li><p>If there are no three plugin buttons, go to Plugins – Manage and Install Plugins, select Installed tab and find Doner. Check the state of checkbox in front of it</p></li>
+                <li><p>Load any layer or project with layers in QGIS</p></li>
+                <li><p>Now you can try to press <strong>Add doner</strong> button and a new layer called Doner will appear. It will contain an orange ellipse already</p></li>
+            </ol>
+            <img class="pic_in" src="pics/scr_qg_1.png"> 
+            <p>By pressing <img src="pics/doner_add_big.png"> <strong>Add doner</strong> multiple times, you will see that new ellipses will appear and immediately join the initial Doner shape.</p>
+            <img class="pic_in" src="pics/scr_qg_2.png"> 
+            <p><img src="pics/doner_cut_big.png"> <strong>Cut doner</strong> will cut an ellipse shape in initial Doner layer if there is an intersection with it. You may cut everything and layer will be empty. After that, you still can add new ellipses.</p>
+            <img class="pic_settings" src="pics/scr_qg_3.png"> 
+            <p><img src="pics/doner_settings_big.png"> <strong>Doner settings</strong> provide manual set for width and height of ellipse in percent of current extent’s width/height. It cannot be string, zero, decimal or negative number, just a simple integer number from 1 to 100. You also can set a number more than 100 but as a result, ellipse will cross bounds of current extent. In addition, you can change a "Round" checkbox to make a round shape according only on height value. "Paint" checkbox will automatically set a symbology to Doner layer (borderless translucent orange fill).</p>
             <p>After closing QGIS, Doner shapefile layer will be located in <em>C:\Users\%username%\Documents\mapDoner\qgis_doner</em>. When you start QGIS again and press "Add doner", plugin will use this layer.</p>
             <hr>
             <h2 id="mapinfo">MapInfo</h2>
-            <p>To install plugin you have to open Tools – Tool Manager – Register / Launch Plugin and browse for <strong><em>doner.mbx</em></strong>. Note that if you want icons to be displayer, a <strong><em>DonerData.dll</em></strong> should be in the same folder as doner.mbx. A new tool with four buttons will appear in Tools tab. After that, load layer or project containing layers and try to press "Add doner" button. A new layer "Doner" will appear.</p>
-            <img class="pic_in" src="doner_mapinfo_add.png"> 
-            <p>By pressing <img src="doner_add_big.png"> <strong>Add doner</strong> multiple times in different places on map, you will see that new ellipses will appear and immediately join the initial Doner shape.</p>
-            <img class="pic_in" src="doner_mapinfo_cut.png"> 
-            <p><img src="doner_cut_big.png"> <strong>Cut doner</strong> will cut an ellipse shape in initial Doner layer if there is an intersection with it. You may cut everything and layer will be empty. After that, you still can add new ellipses. You can actually see the whole process of cutting shape like selecting initial feature, setting it like a target to be cut then selecting cutter and finally cut. This is because of some bulky MapBasic which cannot change shape in *.tab files directly.</p>
-            <p><img src="doner_crs_big.png"> <strong>Set CRS</strong> is a special button to set a unique coordinate system and bounds for current mapper window. This is due to two things. The first one is based on MapBasic limits for MapperInfo function. According to MapBasic Reference <em>"MapperInfo( ) does not return coordinates (for example MINX, MAXX, MINY, MAXY) in the units set for the map window. Instead, the coordinate values are returned in the units of the internal coordinate system of the MapInfo Pro session or the MapBasic application that calls the function (if the coordinate system was changed within the application). Also, the MAPPER_INFO_XYUNITS attribute returns the units that are used to display the cursor location in the Status Bar (set by using Set Map Window Frontwindow() XY Units)."</em> Because of that plugin has to set coordinate system for a mapper window. And from here the second problem appear. MapInfo has a limit of 254 unique coordinate systems during MapInfo working session. This problem was mentioned before and probably there is no solution to increase limit or overwrite existing coordinate systems. So that I decided to add this button which will set coordinate system only once. If you change layer or project properties, it will stay the same so press it if needed to adjust new ellipses for new coordinate system. </p>
-            <img class="pic_settings" src="doner_mapinfo_settings.png"> 
-            <p><img src="doner_settings_big.png"> <strong>Doner settings</strong> provide manual set for width and height of ellipse in percent of current extent’s width/height. It cannot be string, zero, decimal or negative number, just a simple integer number from 1 to 100. You also can set a number more than 100 but as a result, ellipse will cross bounds of current extent. In addition, you can change a "Round" checkbox to make a round shape according only on height value. "Paint" checkbox will automatically set a symbology to Doner layer (borderless translucent orange fill).</p>
+            <h4>(Tested on ver. Pro 15.0 64-bit, Pro 16.0 64-bit)</h4>
+            <h3>Installation:</h3>
+            <ol>
+                <li><p>In MapInfo main window open Home – Tools – Options - Register Tool / Run Program and browse for <strong><em>doner.mbx</em></strong>. Note that if you want icons to be displayer, a <strong><em>DonerData.dll</em></strong> should be in the same folder as doner.mbx</p></li>
+                <li><p>If there is no Legacy tab with four buttons, check Tool manager and find Doner in a list of registered plugins. Click on Load Tool icon</p></li>
+                <li><p>Load any layer or project with layers in MapInfo</p></li>
+                <li><p>Now you can try to press <strong>Add doner</strong> button and a new layer called Doner will appear. It will contain an orange ellipse already</p></li>
+            </ol>
+            <img class="pic_in" src="pics/scr_mi_1.png"> 
+            <p>By pressing <img src="pics/doner_add_big.png"> <strong>Add doner</strong> multiple times, you will see that new ellipses will appear and immediately join the initial Doner shape.</p>
+            <img class="pic_in" src="pics/scr_mi_2.png"> 
+            <p><img src="pics/doner_cut_big.png"> <strong>Cut doner</strong> will cut an ellipse shape in initial Doner layer if there is an intersection with it. You may cut everything and layer will be empty. After that, you still can add new ellipses. You can actually see the whole process of cutting shape like selecting initial feature, setting it like a target to be cut then selecting cutter and finally cut. This is because of some bulky MapBasic which cannot change shape in *.tab files directly.</p>
+            <p><img src="pics/doner_crs_big.png"> <strong>Set CRS</strong> is a special button to set a unique coordinate system and bounds for current mapper window. This is due to two things. The first one is based on MapBasic limits for MapperInfo function. According to MapBasic Reference <em>"MapperInfo( ) does not return coordinates (for example MINX, MAXX, MINY, MAXY) in the units set for the map window. Instead, the coordinate values are returned in the units of the internal coordinate system of the MapInfo Pro session or the MapBasic application that calls the function (if the coordinate system was changed within the application). Also, the MAPPER_INFO_XYUNITS attribute returns the units that are used to display the cursor location in the Status Bar (set by using Set Map Window Frontwindow() XY Units)."</em> Because of that plugin has to set coordinate system for a mapper window. And from here the second problem appear. MapInfo has a limit of 254 unique coordinate systems during MapInfo working session. This problem was mentioned before and probably there is no solution to increase limit or overwrite existing coordinate systems. So that I decided to add this button which will set coordinate system only once. If you change layer or project properties, it will stay the same so press it if needed to adjust new ellipses for new coordinate system. </p>
+            <img class="pic_settings" src="pics/scr_mi_3.png"> 
+            <p><img src="pics/doner_settings_big.png"> <strong>Doner settings</strong> provide manual set for width and height of ellipse in percent of current extent’s width/height. It cannot be string, zero, decimal or negative number, just a simple integer number from 1 to 100. You also can set a number more than 100 but as a result, ellipse will cross bounds of current extent. In addition, you can change a "Round" checkbox to make a round shape according only on height value. "Paint" checkbox will automatically set a symbology to Doner layer (borderless translucent orange fill).</p>
             <p>After closing MapInfo, Doner Tab layer will be located in <em>C:\Users\%username%\Documents\mapDoner\mapinfo_doner</em>. When you start MapInfo again and press "Add doner", plugin will use this layer.</p>
+            <br>
+            <hr>
+            <h2 id="author">About</h2>
+            <p>My name is Pavel and I am the author of this plugin. This plugin is free but any donations <a href="https://my.qiwi.com/Pavel-PreWgfHejG" target="_blank">would be appreciated</a> as well as sharing it. Any question, bug reports and suggestions you can send here:</p>
+            <ul>
+                <li ><p><strong>E-mail</strong>: <a href="mailto:pasha004@yandex.ru" target="_blank">pasha004@yandex.ru</a></p></li>
+                <li ><p><strong>Facebook</strong>: <a href="https://www.facebook.com/profile.php?id=100002056762317" target="_blank">https://www.facebook.com/profile.php?id=100002056762317</a></p></li>
+                <li ><p><strong>Telegram</strong>: <a href="https://t.me/PavelPereverzev" target="_blank">@PavelPereverzev</a></p></li>
+            </ul>
+            <br>
         </div>
     </body>
 </html>
